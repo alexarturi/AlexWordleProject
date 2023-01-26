@@ -1,28 +1,29 @@
 public class Wordle {
-    private String[] bank = {"HELLO", "IRATE", "ADIEU", "BRAKE", "MOUNT", "HAPPY", "TRACK", "PARTY", "FUDGE", "DROOP"};
-    private String starter;
+
     public static String[] colors = {"gray", "gray", "gray", "gray", "gray"};
     public static boolean win;
+    private WordSource source;
+    public static String word;
 
     public Wordle(){
-        starter = bank[(int)(Math.random()*10)];
         win = false;
-    }
-
-    public String getWord(){
-        return starter;
+        source = new WordSource();
+        word = source.getWord();
     }
 
     public void checkWord(String guess){
-        char[] guessArr = guess.toCharArray();
-        char[] wordArr = starter.toCharArray();
+        String g = guess.toLowerCase();
+        String computer = word.toLowerCase();
+        char[] guessArr = g.toCharArray();
+        char[] wordArr = computer.toCharArray();
         for (int i = 0; i<5; i++){
+            int idx = computer.indexOf(guessArr[i]);
             if (guessArr[i]==wordArr[i]){
                 colors[i] = "green";
+            } else if(idx!=-1 && !colors[idx].equals("green")){
+                colors[i] = "yellow";
             } else {
-                if(starter.indexOf(guessArr[i])!=-1) {
-                    colors[i] = "yellow";
-                }
+                colors[i] = "gray";
             }
         }
     }
@@ -39,4 +40,6 @@ public class Wordle {
         }
         return false;
     }
+
+
 }
