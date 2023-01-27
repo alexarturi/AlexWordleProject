@@ -20,7 +20,7 @@ public class Wordle {
             int idx = computer.indexOf(guessArr[i]);
             if (guessArr[i]==wordArr[i]){
                 colors[i] = "green";
-            } else if(idx!=-1 && !colors[idx].equals("green")){
+            } else if(idx!=-1 && !colors[idx].equals("green") && wordArr[idx]!=(guessArr[idx])){
                 colors[i] = "yellow";
             } else {
                 colors[i] = "gray";
