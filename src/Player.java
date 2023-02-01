@@ -41,7 +41,7 @@ public class Player {
         System.out.println(name + " has not won " + success[6] + " times.");
         System.out.println();
         if (rounds!=0){
-            System.out.println(name + "'s winning percentage is " + getWinPercentage() + " in " + rounds + " games");
+            System.out.println(name + "'s winning percentage is " + getWinPercentage() *100+ "% in " + rounds + " games");
             System.out.println();
         }
     }
